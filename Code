@@ -1,274 +1,857 @@
-import random
-import time
-import sys
+r=3
+f=4
+i=2
 def main():
-    #i'm making a casino game, this is the intro. This decides the game we'll play based off of user input.
-    print("Welcome to our casino, what game would like to play?", "(if you wouldn't like to play game, type: Im done)")
-    print(" ")
-    print("\__Slot Machine_/")
-    print(" ")
-    print("\__Blackjack___/")
-    print(" ")
-    print("\__Baccarat__/")
-    print(" ")
-    #asks what game
-    y=0
-    # y is just so we can see if a game has been chosen
-    x= input("So, what'll you choose? ")
-    if x == "Slot Machine":
-        Slot_Machine()
-        y=1
+    import random
+    import time
+    l=2
+    r=3
+    
+    def Slot_Machine():
+        money = 500
+        print("")
+        rule_reading = input("Welcome to slots! Do you know how this works?")
+        print("")
 
-    if x == "Blackjack":
-        Blackjack()
-        y=1
+        if rule_reading == "yes":
+            print("Very well, may the odds be ever in your favor")
+            print("")
 
-    if x == "Baccarat":
-        Baccarat()
-        y=1
+        elif rule_reading == "no":
 
-    if x == "Im done":
-        print("Thank you for playing")
-        y=1
+            while rule_reading == "no":
+                print("No worries! (👍 ≖ ‿ ‿ ≖ )👍 👍 (≖ ‿ ‿ ≖ 👍 ) ")
+                print("")
+                print("Three wheels will spin giving you a random number")
+                print("if one of those numbers is a seven, you get 50$")
+                print("if two of those numbers is a seven, you get 250$")
+                print("if three of those numbers is a seven, you get 5000$")
+                print("")
+                understand = input("Did you understand?")
 
-    while y != 1:
+                if understand == "yes":
+                    print("Very well, may the odds be ever in your favor")
+                    print("")
+                    rule_reading = "yes" 
+
+                while understand == "no":
+                    print("Take your time")
+                    print("")
+                    time.sleep(4)
+                    understand = input("Did you understand?")
+                    print("")
+            
+        elif rule_reading != "yes" and rule_reading != "no":
+            print("Sorry I didn't quite get that, could you enter that again?")
+            rule_reading = input("Type here:")
+            if rule_reading == "yes":
+
+                print("Very well, may the odds be ever in your favor")
+                print("")
+
+            elif rule_reading == "no":
+
+                while rule_reading == "no":
+                    print("No worries! (👍≖‿‿≖)👍 👍(≖‿‿≖👍) ")
+                    print("")
+                    print("Three wheels will spin giving you a random number")
+                    print("if one of those numbers is a seven, you get 50$")
+                    print("if two of those numbers is a seven, you get 250$")
+                    print("if three of those numbers is a seven, you get 5000$")
+                    print("")
+                    rule_reading = input("Did you understand?")
+
+        spin_again = input("Would you like to spin the wheel? ")
+        print("")
+
+        if spin_again == "yes":
+
+            while spin_again == "yes":
+                basic_reel = [1,2,3,4,5,6,7,8,9,0]
+                reel_reult1 = random.choice(basic_reel)
+                reel_reult2 = random.choice(basic_reel)
+                reel_reult3 = random.choice(basic_reel)
+
+                print("                     ():()")
+                time.sleep(.02)
+                print("               (): : : : : : :()")
+                time.sleep(.02)
+                print("          (): : : : : : : : : : : :()")
+                time.sleep(.02)
+                print("      (): : : : : : : : : : : : : : : :()")
+                time.sleep(.02)
+                print("   (): : : : : : : : : : : : : : : : : : :()")
+                time.sleep(.02)
+                print(" (): : :       : : :       : : :       : : :()")
+                time.sleep(.02)
+                print("() : : :  ", reel_reult1, "  : : :  ", reel_reult2, "  : : : :", reel_reult3, ": : : : ()")
+                time.sleep(.02)
+                print(" (): : :       : : :       : : :       : : :()")
+                time.sleep(.02)
+                print("   (): : : : : : : : : : : : : : : : : : :()")
+                time.sleep(.02)
+                print("      (): : : : : : : : : : : : : : : :()")
+                time.sleep(.02)
+                print("          (): : : : : : : : : : : :()")
+                time.sleep(.02)
+                print("               (): : : : : : :()")
+                time.sleep(.02)
+                print("                     ():()")
+                time.sleep(.02)
+
+                if reel_reult1 == 7 and reel_reult2 != 7 and reel_reult3 !=7:
+                    print("Your first spin was a 7!")
+                    print("")
+                    print("you get 50$")
+                    print("")
+                    money += 50
+                    print("You now have "+ str(money) + "$")
+                    print("")
+
+                if reel_reult1 != 7 and reel_reult2 == 7 and reel_reult3 !=7:
+                    print("Your second spin was a 7!")
+                    print("")
+                    print("you get 50$")
+                    print("")
+                    money += 50    
+                    print("You now have "+ str(money) + "$")
+                    print("")
+                    
+                if reel_reult1 != 7 and reel_reult2 != 7 and reel_reult3 ==7:
+                    print("Your third spin was a 7!")
+                    print("")
+                    print("you get 50$")
+                    print("")
+                    money += 50
+                    print("You now have "+ str(money) + "$")
+                    print("")
+
+                if reel_reult1 == 7 and reel_reult2 == 7 and reel_reult3 !=7:
+                    print("Your first and second nunmber were 7's!")
+                    print("")
+                    print("you get 250$")
+                    print("")
+                    money += 250
+                    print("You now have "+ str(money) + "$")
+                    print("")
+
+                if reel_reult1 != 7 and reel_reult2 == 7 and reel_reult3 ==7:
+                    print("Your second and third nunmber were 7's!")
+                    print("")
+                    print("you get 250$")
+                    print("")
+                    money += 250 
+                    print("You now have "+ str(money) + "$")
+                    print("")
+
+                if reel_reult1 == 7 and reel_reult2 != 7 and reel_reult3 ==7:
+                    print("Your first and third nunmber were 7's!")
+                    print("")
+                    print("you get 250$")
+                    print("")
+                    money += 250  
+                    print("You now have "+ str(money) + "$")
+                    print("")
+                
+                if reel_reult1 == 7 and reel_reult2 == 7 and reel_reult3 ==7:
+                    print("All your numbers were 7's !!!!!!")
+                    print("")
+                    print("you get 5000$")
+                    print("")
+                    money += 250     
+                    print("You now have "+ str(money) + "$")
+                    print("")
+
+                if reel_reult1 != 7 and reel_reult2 != 7 and reel_reult3 !=7:
+                    print("Im sorry, but you didnt win anything")
+                    print("")
+                    print("You lose 50$")
+                    money -= 50
+                    print("You now have "+ str(money) + "$")
+                    print("")
+                spin_again = input("would you like to spin again? ")
+                if spin_again == "no":
+                    print("See you later  (•◡ •) / ")
+                    time.sleep(2)
+                    print("\n" * 100)
+                while spin_again != "yes" and spin_again != "no":
+                    print("I couldn't understand that could you type that again")
+                    spin_again = input("type here: ")
+                    print("")
+                    if spin_again == "no":
+                        print("See you later  (•◡ •) / ")
+                        time.sleep(2)
+                        print("\n" * 100)
+
+        elif spin_again == "no":
+            print("See you later  (•◡ •) / ")
+            time.sleep(2)
+            print("\n" * 100)
+
+        else:
+            while spin_again != "yes" and spin_again != "no":
+                print("I couldn't understand that could you type that again")
+                spin_again = input("Type here: ")
+                print("")
+
+                if spin_again == "no":
+                    print("See you later  (•◡ •) / ")
+                    time.sleep(2)
+                    print("\n" * 100)
+
+                elif spin_again == "yes":
+                    while spin_again == "yes":
+                        basic_reel = [1,2,3,4,5,6,7,8,9,0]
+                        reel_reult1 = random.choice(basic_reel)
+                        reel_reult2 = random.choice(basic_reel)
+                        reel_reult3 = random.choice(basic_reel)
+
+                        print("                     ():()")
+                        time.sleep(.02)
+                        print("               (): : : : : : :()")
+                        time.sleep(.02)
+                        print("          (): : : : : : : : : : : :()")
+                        time.sleep(.02)
+                        print("      (): : : : : : : : : : : : : : : :()")
+                        time.sleep(.02)
+                        print("   (): : : : : : : : : : : : : : : : : : :()")
+                        time.sleep(.02)
+                        print(" (): : :       : : :       : : :       : : :()")
+                        time.sleep(.02)
+                        print("() : : :  ", reel_reult1, "  : : :  ", reel_reult2, "  : : : :", reel_reult3, ": : : : ()")
+                        time.sleep(.02)
+                        print(" (): : :       : : :       : : :       : : :()")
+                        time.sleep(.02)
+                        print("   (): : : : : : : : : : : : : : : : : : :()")
+                        time.sleep(.02)
+                        print("      (): : : : : : : : : : : : : : : :()")
+                        time.sleep(.02)
+                        print("          (): : : : : : : : : : : :()")
+                        time.sleep(.02)
+                        print("               (): : : : : : :()")
+                        time.sleep(.02)
+                        print("                     ():()")
+                        time.sleep(.02)
+
+                        if reel_reult1 == 7 and reel_reult2 != 7 and reel_reult3 !=7:
+                            print("Your first spin was a 7!")
+                            print("")
+                            print("you get 50$")
+                            print("")
+                            money += 50
+                            print("You now have "+ str(money) + "$")
+                            print("")
+
+                        if reel_reult1 != 7 and reel_reult2 == 7 and reel_reult3 !=7:
+                            print("Your second spin was a 7!")
+                            print("")
+                            print("you get 50$")
+                            print("")
+                            money += 50    
+                            print("You now have "+ str(money) + "$")
+                            print("")
+                            
+                        if reel_reult1 != 7 and reel_reult2 != 7 and reel_reult3 ==7:
+                            print("Your third spin was a 7!")
+                            print("")
+                            print("you get 50$")
+                            print("")
+                            money += 50
+                            print("You now have "+ str(money) + "$")
+                            print("")
+
+                        if reel_reult1 == 7 and reel_reult2 == 7 and reel_reult3 !=7:
+                            print("Your first and second nunmber were 7's!")
+                            print("")
+                            print("you get 250$")
+                            print("")
+                            money += 250
+                            print("You now have "+ str(money) + "$")
+                            print("")
+
+                        if reel_reult1 != 7 and reel_reult2 == 7 and reel_reult3 ==7:
+                            print("Your second and third nunmber were 7's!")
+                            print("")
+                            print("you get 250$")
+                            print("")
+                            money += 250 
+                            print("You now have "+ str(money) + "$")
+                            print("")
+
+                        if reel_reult1 == 7 and reel_reult2 != 7 and reel_reult3 ==7:
+                            print("Your first and third nunmber were 7's!")
+                            print("")
+                            print("you get 250$")
+                            print("")
+                            money += 250  
+                            print("You now have "+ str(money) + "$")
+                            print("")
+                        
+                        if reel_reult1 == 7 and reel_reult2 == 7 and reel_reult3 ==7:
+                            print("All your numbers were 7's !!!!!!")
+                            print("")
+                            print("you get 5000$")
+                            print("")
+                            money += 250     
+                            print("You now have "+ str(money) + "$")
+                            print("")
+
+                        if reel_reult1 != 7 and reel_reult2 != 7 and reel_reult3 !=7:
+                            print("Im sorry, but you didnt win anything")
+                            print("")
+                            print("You lose 50$")
+                            money -= 50
+                            print("You now have "+ str(money) + "$")
+                            print("")
+                        spin_again = input("would you like to spin again? ")
+                        if spin_again == "no":
+                            print("See you later  (•◡ •) / ")
+                            time.sleep(2)
+                            print("\n" * 100)
+                        while spin_again != "yes" and spin_again != "no":
+                            print("I couldn't understand that could you type that again")
+                            spin_again = input("type here: ")
+                            print("")
+    def Blackjack():
+        import random
+        import time
+        y=0
+        def read_rules():
+            print(" ")
+            print(" ")
+            print("Oh no! (@_@) Here are the rules!")
+            print(" ")
+            print("The cards 2 - 9 are equal to their face value, 10 - king are worth ten and aces can be worth 1 or 11")
+            print(" ")
+            print("Each player is dealt two cards, usually face-up. The dealer gets two cards, one face-up and one face-down")
+            print("The card facing down is called the hole card)")
+            print(" ")
+            print("Players take turns to act. You can:")
+            print("Hit: Take another card or Stand: Keep your current hand.")
+            print(" ")
+            print("If your hand value is closer to 21 than the dealer's without going over, you win")
+            print("If the dealer has a blackjack, they win, unless you also have a blackjack then its a tie")
+            print(" ")
+            print("If your hand value goes over 21, you bust and lose the bet.")
+            print(" ")
+
+        def start_game():
+            print(" ")
+            print("Good to hear!(^o^) ")
+            print(" ")
+            time.sleep(1)
+            y=2
+            print('\n' * 50)
+
+        #used for reading things
         print(" ")
-        print("I don't recognize that game, maybe try something different.")
+        print("Hooray! Mighty fine choice, I love Blackjack *(^o^)*")
         print(" ")
-        x = input("So, what'll you choose? ")
+        rules = input("Do you know the rules? ")
+        if rules == "yes":
+            y=1
+        if y != 1:
+            read_rules()
+
+        ready=input("Ready to start? ")
+        import time
+        if ready == "yes":
+            start_game()  
+            f=9
+        while ready != "yes":
+            print(" ")
+            print("I'll let you think ")
+            print(" ")
+            time.sleep(5)
+            ready=input("Ready to start? ")  
+            if ready == "yes":
+                start_game()
+                f=9  
+
+        while f == 9:
+            outcomes = [2,3,4,5,6,7,8,9,10,11]
+            weights = [0.07692,0.07692,0.07692,0.07692,0.07692,0.07692,0.07692,0.07692,0.30769,0.07692]  # The probabilities of each outcome
+            # Use random.choices() to get a weighted random outcome
+            #generating numbers for hands
+
+            playernum1 = random.choices(outcomes, weights, k=1)[0]
+            playernum2 = random.choices(outcomes, weights, k=1)[0]
+            playerhand = playernum1+playernum2
+
+            housenum1 = random.choices(outcomes, weights, k=1)[0]
+            housenum2 = random.choices(outcomes, weights, k=1)[0]
+            househand = housenum1+housenum2
+
+            if housenum1 == 11 or housenum2 == 11:
+                if housenum1 == 11 and housenum2 == 11:
+                    housenum1 = 1
+                    housenum2 =11
+                    
+            #hits while house is under 17 _ rules
+            while househand<17:
+                #generates new number
+                new_housenum = random.choices(outcomes, weights, k=1)[0]
+                if new_housenum ==11:
+                    if househand > 10:
+                        new_housenum = 1
+                    else:
+                        new_housenum=11
+                househand += new_housenum
+                h=2
+
+            if playernum1 == 11 or playernum2 == 11:
+                if playernum1 == 11 and playernum2 == 11:
+                    print("Woah, you must be lucky! You got double Aces!")
+                    print(" ")
+                    print("Your hand can be worth two or twelve!")
+                    print(" ")
+                    doubleace = input("Which would you prefer? ")
+                    print(" ")
+
+                    if doubleace == "two":
+                        print("Very well, your hand is now equal to two!")
+                        print(" ")
+                        playerhand = 2
+
+                    elif doubleace == "twelve":
+                        print("Very well, your hand is now equal to twelve!")
+                        print(" ")
+                        playerhand = 12
+
+                    else:
+                        while doubleace != "two" or doubleace != "twelve":
+                            print("I didnt get that, try again ")
+                            print(" ")
+                            doubleace = input("Type here: ")
+                            print(" ")
+
+                            if doubleace == "two":
+                                print("Very well, your hand is now equal to two!")
+                                print(" ")
+                                playerhand = 2
+
+                            elif doubleace == "twelve":
+                                print("Very well, your hand is now equal to twelve!")
+                                print(" ")
+                                playerhand = 12
+
+                elif playernum1 == 11 and playernum2 != 11:
+                    print("Woah, your first card is an Ace!")
+                    print(" ")
+                    print("Your card can be worth one or eleven!")
+                    print(" ")
+                    print("Keep in mind, your other card is worth "+ str(playernum2)+ ":")
+                    print(" ")
+                    singleace1 = input("Which would you prefer? ")
+                    print(" ")
+
+                    if singleace1 == "one":
+                        print("Very well, your first card is now equal to one!")
+                        print(" ")
+                        playernum1 = 1
+                    elif singleace1 == "eleven":
+                        print("Very well, your first card is now equal to eleven!")
+                        print(" ")
+                        playernum1 = 11
+                    else:
+                        while singleace1 != "one" or singleace1 != "eleven":
+                            print("I didnt get that, try again ")
+                            print(" ")
+                            singleace1 = input("Type here: ")
+                            print(" ")
+                            if singleace1 == "one":
+                                print("Very well, your first card is now equal to one!")
+                                print(" ")
+                                playernum1 = 1
+                            elif singleace1 == "eleven":
+                                print("Very well, your first card is now equal to eleven!")
+                                print(" ")
+                                playernum1 = 11
+
+                else:
+                    print("Woah, your second card is an Ace!")
+                    print(" ")
+                    print("Your card can be worth one or eleven!")
+                    print(" ")
+                    print("Keep in mind, your other card is worth "+ str(playernum1)+ ":")
+                    print(" ")
+                    singleace2 = input("Which would you prefer? ")
+                    print(" ")
+
+                    if singleace2 == "one":
+                        print("Very well, your second card is now equal to one!")
+                        print(" ")
+                        playernum2 = 1
+                    elif singleace2 == "eleven":
+                        print("Very well, your second card is now equal to eleven!")
+                        print(" ")
+                        playernum2 = 11
+                    else:
+                        while singleace2 != "one" or singleace2 != "eleven":
+                            print("I didnt get that, try again ")
+                            print(" ")
+                            singleace2 = input("Type here: ")
+                            print(" ")
+                            if singleace2 == "one":
+                                print("Very well, your second card is now equal to one!")
+                                print(" ")
+                                playernum2 = 1
+                            elif singleace2 == "eleven":
+                                print("Very well, your second card is now equal to eleven!")
+                                print(" ")
+                                playernum2 = 11
+
+            print("You have " + str(playerhand)+ "!")
+            print(" ")
+            print("The house has", housenum1, "and a card that is flipped over!")
+            print(" ")
+            choice = input("Would you like to hit or stand? ")
+            print(" ")
+            if choice == "hit":
+                while choice == "hit":
+                    if playerhand < 21:
+                        newnum = random.choices(outcomes, weights, k=1)[0]
+                        playerhand += newnum    
+
+                        if playerhand < 21:
+                            print("you have", playerhand)
+                            choice = input("Would you like to hit or stand? ")
+
+                        elif playerhand == 21:
+                            print("wow your lucky, you now have 21")
+                            y=14
+                            player_final_hand = 21
+                    else:
+                        choice = "stand"
+
+            if choice == "stand":
+                player_final_hand = playerhand
+                    #all the tie possibilities
+
+                if player_final_hand == 0:
+                    player_final_hand= playerhand
+
+                if player_final_hand > 21 and househand > 21 and player_final_hand > househand:
+                    print("Hmm...")
+                    print(" ")
+                    time.sleep(2)
+                    print("Looks like you had the hand of higher worth, but both you and the House busted.")
+                    print(" ")
+                    print("House:", househand)
+                    print("Player:", player_final_hand)
+                    print(" ")
+                    print("Well, looks like it's a draw, how boring (-_-)...")
+                    time.sleep(1.5)
+                    print(" ")
+                    
+                elif player_final_hand > 21 and househand > 21 and player_final_hand == househand:
+                    print("Hmm...")
+                    print(" ")
+                    time.sleep(2)
+                    print("Looks like you and the house busted with equal scores.")
+                    print(" ")
+                    print("House:", househand)
+                    print("Player:", player_final_hand)
+                    print(" ")
+                    print("Well, looks like it's a draw, how boring(-_-)...")
+                    time.sleep(1.5)
+                    print(" ")
+                    
+                elif player_final_hand > 21 and househand>21 and househand>player_final_hand:
+                    print("Hmm...")
+                    print(" ")
+                    time.sleep(2)
+                    print("Looks like the house had a higher number than you, but you both busted: its a tie")
+                    print(" ")
+                    print("House:", househand)
+                    print("Player:", player_final_hand)
+                    print(" ")
+                    print("Well, looks like it's a draw, how boring(-_-)...")
+                    time.sleep(1.5)
+                    print(" ")
+                    
+                elif player_final_hand < 21 and househand < 21 and househand == player_final_hand:
+                    print("Hmm...")
+                    print(" ")
+                    time.sleep(2)
+                    print("You did not bust and neither did the house, but you had the same score")
+                    print(" ")
+                    print("House:", househand)
+                    print("Player:", player_final_hand)
+                    print(" ")
+                    print("Well, looks like it's a draw, how boring(-_-)...")
+                    time.sleep(1.5)
+                    print(" ")
+                    
+                elif player_final_hand>21 and househand<21:
+                    print("House wins!!!!!")
+                    print(" ")
+                    time.sleep(2)
+                    print("You busted, but the house did not!")
+                    print(" ")
+                    print("Player:", player_final_hand)
+                    print("House:", househand)
+                    print(" ")
+                    print("YOU LOSE!")
+                    time.sleep(1.5)
+                    print(" ")
+                    
+                elif player_final_hand<21 and househand<21 and househand> player_final_hand:
+                    print("House wins!!!!!")
+                    print(" ")
+                    time.sleep(2)
+                    print("You did not bust, but the house was closer to 21!")
+                    print(" ")
+                    print("Player:", player_final_hand)
+                    print("House:", househand)
+                    print(" ")
+                    print("YOU LOSE!")
+                    time.sleep(1.5)
+                    print(" ")
+                    
+                elif player_final_hand<21 or player_final_hand == 21 and househand>21 and househand != 21:
+                    print("You win!!!!!")
+                    print(" ")
+                    time.sleep(1)
+                    print("The house busted but you did not!")
+                    print(" ")
+                    print("Player:", player_final_hand)
+                    print("House:", househand)
+                    print(" ")
+                    print("CONGRATS!")
+                    time.sleep(1)
+                    print(" ")
+                    
+                elif player_final_hand<21 or player_final_hand == 21 and househand<21 and player_final_hand>househand:
+                    print("You win!!!!!")
+                    print(" ")
+                    time.sleep(2)
+                    print("You didnt bust and neither did the house but you were closer!")
+                    print(" ")
+                    print("Player:", player_final_hand)
+                    print("House:", househand)
+                    print(" ")
+                    print("CONGRATS!")
+                    time.sleep(1.5)
+                    print(" ")
+
+            else:
+                while choice != "hit" and choice != "stand":
+                    print("I didn't get that, try again")
+                    print(" ")
+                    choice = input("Type here: ")
+                    print(" ")
+                if choice == "hit":
+                    while choice == "hit":
+                        if playerhand < 21:
+                            newnum = random.choices(outcomes, weights, k=1)[0]
+                            playerhand += newnum    
+
+                            if playerhand < 21:
+                                print("you have", playerhand)
+                                choice = input("hit or stand")
+
+                            elif playerhand == 21:
+                                print("wow your lucky, you now have 21")
+                                y=14
+                                player_final_hand = 21
+                        else:
+                            choice = "stand"
+                if choice == "stand":
+                    player_final_hand = playerhand
+                    
+                    if player_final_hand == 0:
+                        player_final_hand= playerhand
+
+                    if player_final_hand > 21 and househand > 21 and player_final_hand > househand:
+                        print("Hmm...")
+                        print(" ")
+                        time.sleep(2)
+                        print("Looks like you had the hand of higher worth, but both you and the House busted.")
+                        print(" ")
+                        print("House:", househand)
+                        print("Player:", player_final_hand)
+                        print(" ")
+                        print("Well, looks like it's a draw, how boring (-_-)...")
+                        time.sleep(1.5)
+                        print(" ")
+                        
+                    elif player_final_hand > 21 and househand > 21 and player_final_hand == househand:
+                        print("Hmm...")
+                        print(" ")
+                        time.sleep(2)
+                        print("Looks like you and the house busted with equal scores.")
+                        print(" ")
+                        print("House:", househand)
+                        print("Player:", player_final_hand)
+                        print(" ")
+                        print("Well, looks like it's a draw, how boring(-_-)...")
+                        time.sleep(1.5)
+                        print(" ")
+                        
+                    elif player_final_hand > 21 and househand>21 and househand>player_final_hand:
+                        print("Hmm...")
+                        print(" ")
+                        time.sleep(2)
+                        print("Looks like the house had a higher number than you, but you both busted: its a tie")
+                        print(" ")
+                        print("House:", househand)
+                        print("Player:", player_final_hand)
+                        print(" ")
+                        print("Well, looks like it's a draw, how boring(-_-)...")
+                        time.sleep(1.5)
+                        print(" ")
+                        
+                    elif player_final_hand < 21 and househand < 21 and househand == player_final_hand:
+                        print("Hmm...")
+                        print(" ")
+                        time.sleep(2)
+                        print("You did not bust and neither did the house, but you had the same score")
+                        print(" ")
+                        print("House:", househand)
+                        print("Player:", player_final_hand)
+                        print(" ")
+                        print("Well, looks like it's a draw, how boring(-_-)...")
+                        time.sleep(1.5)
+                        print(" ")
+                        
+                    elif player_final_hand>21 and househand<21:
+                        print("House wins!!!!!")
+                        print(" ")
+                        time.sleep(2)
+                        print("You busted, but the house did not!")
+                        print(" ")
+                        print("Player:", player_final_hand)
+                        print("House:", househand)
+                        print(" ")
+                        print("YOU LOSE!")
+                        time.sleep(1.5)
+                        print(" ")
+                        
+                    elif player_final_hand<21 and househand<21 and househand> player_final_hand:
+                        print("House wins!!!!!")
+                        print(" ")
+                        time.sleep(2)
+                        print("You did not bust, but the house was closer to 21!")
+                        print(" ")
+                        print("Player:", player_final_hand)
+                        print("House:", househand)
+                        print(" ")
+                        print("YOU LOSE!")
+                        time.sleep(1.5)
+                        print(" ")
+                        
+                    elif player_final_hand<21 or player_final_hand == 21 and househand>21 and househand != 21:
+                        print("You win!!!!!")
+                        print(" ")
+                        time.sleep(1)
+                        print("The house busted but you did not!")
+                        print(" ")
+                        print("Player:", player_final_hand)
+                        print("House:", househand)
+                        print(" ")
+                        print("CONGRATS!")
+                        time.sleep(1)
+                        print(" ")
+                        
+                    elif player_final_hand<21 or player_final_hand == 21 and househand<21 and player_final_hand>househand:
+                        print("You win!!!!!")
+                        print(" ")
+                        time.sleep(2)
+                        print("You didnt bust and neither did the house but you were closer!")
+                        print(" ")
+                        print("Player:", player_final_hand)
+                        print("House:", househand)
+                        print(" ")
+                        print("CONGRATS!")
+                        time.sleep(1.5)
+                        print(" ")
+
+            play_again = input("Would you like to play again? ")
+            print(" ")
+            if play_again == "no":
+                print("see you later!")
+                print(" ")
+                time.sleep(2)
+                f = 8
+            if play_again == "yes":
+                print(" ")
+                print("Good to hear!(^o^) ")
+                print(" ")
+                time.sleep(1)
+                y=2
+                print('\n' * 50)
+                f = 9           
+            else:
+                while play_again != "yes" and play_again != "no":
+                    print("I didnt get that, try again ")
+                    print(" ")
+                    play_again = input("Type here: ")
+                    print(" ")
+
+                    if play_again == "no":
+                        print("see you later!")
+                        print(" ")
+                        time.sleep(2)
+                        f = 8
+
+                    if play_again == "yes":
+                        print(" ")
+                        print("Good to hear!(^o^) ")
+                        print(" ")
+                        time.sleep(1)
+                        y=2
+                        print('\n' * 50)
+                        f = 9                      
+
+    while r==3:
+        #i'm making a casino game, this is the intro. This decides the game we'll play based off of user input.
         print(" ")
-        # so that we can access the games in the while loop
+        print("Welcome to my casino 😈 , what game would like to play?", "(if you wouldn't like to play game, type: Im done)")
+        print(" ")
+        print("\__Slot Machine_/")
+        print(" ")
+        print("\__Blackjack___/")
+        print(" ")
+        #asks what game
+        y=0
+        # y is just so we can see if a game has been chosen
+        x= input("So, what'll you choose? ")
+        print(" ")
         if x == "Slot Machine":
             Slot_Machine()
             y=1
+
         if x == "Blackjack":
             Blackjack()
             y=1
-        if x == "Baccarat":
-            Baccarat()
-            y=1
+
         if x == "Im done":
-            print("Thank you for playing you gained " + str(money) + "$")
+            print("Thank you for playing")
             y=1
+            r=2
 
-    
-    #goes to game said in the input, or if done then says thank you and ends
-    #if they say something that isnt a game it asks them the question again
-
-def Slot_Machine():
-    print(" ")
-    print("Sorry, the slot machine is non functional, maybe try Blackjack")
-
-def Blackjack():
-    y=0
-    #used for reading things
-    print(" ")
-    print("Hooray! Mighty fine choice, I love Blackjack *(^o^)*")
-    print(" ")
-    rules = input("Do you know the rules? ")
-    if rules == "yes":
-        y=1
-    if y != 1:
-        read_rules()
-
-    ready=input("Ready to start? ")
-    if ready == "yes":
-        start_game()  
-    while ready != "yes":
-        print(" ")
-        print("I'll let you think ")
-        print(" ")
-        time.sleep(5)
-        ready=input("Ready to start? ")  
-        if ready == "yes":
-            start_game()   
-    # Define outcomes and their corresponding weights
-    outcomes = [2,3,4,5,6,7,8,9,10,11]
-    weights = [0.07692,0.07692,0.07692,0.07692,0.07692,0.07692,0.07692,0.07692,0.30769,0.77692]  # The probabilities of each outcome
-    # Use random.choices() to get a weighted random outcome
-    #generating numbers for hands
-    playernum1 = random.choices(outcomes, weights, k=1)[0]
-    playernum2 = random.choices(outcomes, weights, k=1)[0]
-
-    housenum1 = random.choices(outcomes, weights, k=1)[0]
-    housenum2 = random.choices(outcomes, weights, k=1)[0]
-
-    #In the event of an ace, asks if you would like it to be 1 or 11 sets value based on input for player
-
-    if playernum1 == 11 or playernum2 == 11:
-        ace1=0
-        ace2=0
-        y=67
-        if playernum1==11 and playernum2==11:
-            print("Woah, you got double aces!(^O^)/ You may now choose for your hand to be worth 2 or 12")
-            double_ace = input("So, what'll it be, two or twelve? ")
-            if double_ace == "two":
-                playernum1=1
-                playernum2=1
-                playerhand1 = 2
-                y=3
-            elif double_ace == "twelve":
-                playernum1=11
-                playernum2=1
-                playerhand1=12         
-                y=3
-            else:
-                while y!=3:
-                    new_input1= input("So, what'll it be, two or twelve? ")
-                    if new_input1 == "two":
-                        playerhand1 = 2
-                        y=3
-                    elif new_input1 == "twelve":
-                        playerhand1==12
-                        y=3
-            y=5
-            
-        if y !=5:
-            if playernum1 == 11 and playernum2 != 11:
-                print("Your first card is an ace! (^O^)/ You may now choose wether it is a one or eleven")
-                print(" ")
-                print("Keep in mind your other card is worth", playernum2)
-                print(" ")
-                time.sleep(3)
-                ace1= input("So now that ive let you think, (^-^) would you like it to be a one or an eleven? ")
-                print(" ") 
-
-            if ace1=="one":
-                playernum1 = 1
-                y=3
-            elif ace1 =="eleven":
-                playernum1=11
-                y=3
-            else:
-                while y!=3 or 67:
-                    new_input = input("Sorry, you typed in a non registratable input. (._.) Please try again ")
-                    print(" ")
-                    if new_input=="one":
-                        playernum1 = 1
-                        y=3
-                    elif new_input =="eleven":
-                        playernum1=11
-                        y=3
-
-            if playernum2 == 11 and playernum1 != 11:
-                print("Your second card is an ace! You may now choose wether it is a one or eleven")
-                print(" ")
-                print("Keep in mind your other card is worth", playernum1)
-                print(" ")
-                ace2= input("You got an ace! Would you like it to be a one or an eleven? ")
-                print(" ")
-
-            if ace2=="one":
-                playernum2 = 1
-                y=3
-
-            elif ace2 =="eleven":
-                playernum2=11
-                y=3
-
-            else:
-                while y != 3:
-                    new_input = input("Sorry, you typed in a non registratable input. Please try again ")
-                    print(" ")
-                    if new_input=="one":
-                        playernum2 = 1
-                    elif new_input =="eleven":
-                        playernum2=11
-                y=3         
-
-    #In the event of an ace, sets value based on checks for house/dealer
-    if housenum1 or housenum2 == 11:
-        if housenum1 and housenum2 == 11:
-            househand1 = 12
-        else:
-            hosuehand1 = housenum1+housenum2
-    playerhand1 = playernum1+playernum2
-    #tells player what they have and what dealer has
-    print("you got", playernum1, "and", playernum2)
-    print("")
-    print("In total you have "+str(playerhand1)+"!")
-    print("The dealer has", housenum1, "and a blank card!")
-    
-    #asks id they would like to hit or stand
-    choice = input("would you like to hit or stand? ")
-    while choice=="hit":
-        playernum_new = random.choices(outcomes, weights, k=1)[0]
-        playerhandloop1= playerhand1
-        playerhandloop1 += playernum_new
-
-        if playerhandloop1 == 21:
-            print("Wow, you have 21, your lucky")
-            choice = "pass"
-
-        elif playerhandloop1 < 21:
-            print("you now have "+str(playerhandloop1)+"!")
-            choice = input("would you like to hit or stand? ")
-
-        elif playerhandloop1 > 21:
-            print("Oh no, you busted!")
+        while y != 1:
+            print("I don't recognize that game, maybe try something different.")
             print(" ")
-            choice = "pass"
+            x = input("So, what'll you choose? ")
+            print(" ")
+            # so that we can access the games in the while loop
+            if x == "Slot Machine":
+                Slot_Machine()
+                y=1
+            if x == "Blackjack":
+                Blackjack()
+                y=1
+            if x == "Im done":
+                print("Thank you for playing!")
+                print(" ")
+                y=1
+                r=2
 
+        
+        #goes to game said in the input, or if done then says thank you and ends
+        #if they say something that isnt a game it asks them the question again
 
-    if choice == "stand":
-        playerhandloop1 = playerhand1
-        player_final_hand = playerhandloop1
-        #all the tie possibilities
-    if player_final_hand > 21 and house_final_hand > 21 and player_final_hand > house_final_hand:
-        print("Hmm...")
-        print(" ")
-        time.sleep(1)
-        print("Looks like you had the hand of higher worth, but both you and the House busted.")
-        print(" ")
-        print("House:", house_final_hand)
-        print("Player:", player_final_hand)
-        print(" ")
-        print("Well, looks like it's a draw, how boring (-_-)...")
-        print(" ")
-        print("Come again soon!(n_n)")
-    elif player_final_hand > 21 and house_final_hand > 21 and player_final_hand == house_final_hand:
-        print("Hmm...")
-        print(" ")
-        time.sleep(1)
-        print("Looks like you and the house busted with equal scores.")
-        print(" ")
-        print("House:", house_final_hand)
-        print("Player:", player_final_hand)
-        print(" ")
-        print("Well, looks like it's a draw, how boring...")
-        print(" ")
-        print("Come again soon!")
-
-
-def read_rules():
-    print(" ")
-    print(" ")
-    print("Oh no! (@_@) Here are the rules!")
-    print(" ")
-    print("The cards 2 - 9 are equal to their face value, 10 - king are worth ten and aces can be worth 1 or 11")
-    print(" ")
-    print("Each player is dealt two cards, usually face-up. The dealer gets two cards, one face-up and one face-down")
-    print("The card facing down is called the hole card)")
-    print(" ")
-    print("Players take turns to act. You can:")
-    print("Hit: Take another card or Stand: Keep your current hand.")
-    print(" ")
-    print("If your hand value is closer to 21 than the dealer's without going over, you win")
-    print("If the dealer has a blackjack, they win, unless you also have a blackjack then its a tie")
-    print(" ")
-    print("If your hand value goes over 21, you bust and lose the bet.")
-    print(" ")
-def start_game():
-    print(" ")
-    print("Good to hear!(^o^) ")
-    print(" ")
-    time.sleep(1)
-    y=2
-    print('\n' * 50) 
-def Baccarat():
-    print(" ")
-    print("Sorry, Baccarat is non functional, maybe try Blackjack")
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
